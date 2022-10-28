@@ -28,6 +28,11 @@ int main(int argc, char** argv)
         printf(NON_ZERO_MESSAGE);
     }
 
+    /*
+    It will generate a different output, and print a different operation name depending on
+    which library has been dynamically loaded previously. 
+    */
+
     z = function(x, y);
     printOp();
 
