@@ -37,7 +37,9 @@ div.so: $(obj_div)
 	gcc -shared $(obj_div) -o $(so_div)
 
 set_path:
+	@echo "************************************************************************************************************************"
 	@echo "Don't forget to set the path: LD_LIBRARY_PATH=/home/jon/Desktop/scripts/C_Dynamic_Libraries_with_path/Dynamic_libraries/"
+	@echo "************************************************************************************************************************"
 
 clean:
 	rm -rf Object_files/* Executable_files/* Dynamic_libraries/*
