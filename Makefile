@@ -13,7 +13,7 @@ so_div		= Dynamic_libraries/libdiv.so
 exe_mult	= Executable_files/mult
 exe_div		= Executable_files/div
 
-all: clean main.o mult.o div.o mult.so div.so mult div set_path
+all: clean main.o mult.o div.o mult.so div.so mult div rm_obj set_path
 
 main.o: $(src_main) $(src_prt)
 	gcc -c $(src_main) -o $(obj_main)
@@ -40,6 +40,9 @@ set_path:
 	@echo "************************************************************************************************************************"
 	@echo "Don't forget to set the path: LD_LIBRARY_PATH=/home/jon/Desktop/scripts/C_Dynamic_Libraries_with_path/Dynamic_libraries/"
 	@echo "************************************************************************************************************************"
+
+rm_obj:
+	rm -rf Object_files
 
 clean:
 	rm -rf Object_files/* Executable_files/* Dynamic_libraries/*
