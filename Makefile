@@ -43,9 +43,10 @@ div.so: $(obj_div)
 	gcc -shared $(obj_div) -o $(so_div)
 
 msg:
-	@echo "************************************************************************************************************************"
-	@echo "Don't forget to set the path: LD_LIBRARY_PATH=/home/jon/Desktop/scripts/C_Dynamic_Libraries_with_path/Dynamic_libraries/"
-	@echo "************************************************************************************************************************"
+	@echo "**************************************************************************************************"
+	@echo "Don't forget to set the path:"
+	@echo "export LD_LIBRARY_PATH=~/Desktop/scripts/C/C_Dynamic_Libraries_with_path/Dynamic_libraries"
+	@echo "**************************************************************************************************"
 
 rm_obj:
 	rm -rf Object_files
