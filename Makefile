@@ -13,9 +13,15 @@ so_div		= Dynamic_libraries/libdiv.so
 exe_mult	= Executable_files/mult
 exe_div		= Executable_files/div
 
-all: clean main.o mult.o div.o mult.so div.so mult div set_path
+shell_dirs	= Shell_files/directories.sh
+shell_test	= Shell_files/test.sh
 
-main.o: $(src_main) $(src_prt)
+all: directories clean main.o mult.o div.o mult.so div.so mult div rm_obj msg test
+
+directories:
+	@./$(shell_dirs)
+
+main.o: $(src_main)
 	gcc -c $(src_main) -o $(obj_main)
 
 mult.o: $(src_mult)
@@ -36,10 +42,17 @@ mult.so: $(obj_mult)
 div.so: $(obj_div)
 	gcc -shared $(obj_div) -o $(so_div)
 
-set_path:
-	@echo "************************************************************************************************************************"
-	@echo "Don't forget to set the path: LD_LIBRARY_PATH=/home/jon/Desktop/scripts/C_Dynamic_Libraries_with_path/Dynamic_libraries/"
-	@echo "************************************************************************************************************************"
+msg:
+	@echo "**************************************************************************************************"
+	@echo "Don't forget to set the path:"
+	@echo "export LD_LIBRARY_PATH=~/Desktop/scripts/C/C_Dynamic_Libraries_with_path/Dynamic_libraries"
+	@echo "**************************************************************************************************"
+
+rm_obj:
+	rm -rf Object_files
 
 clean:
-	rm -rf Object_files/* Executable_files/* Dynamic_libraries/*
+	rm -rf Executable_files/* Dynamic_libraries/*
+
+test:
+	@./$(shell_test)
