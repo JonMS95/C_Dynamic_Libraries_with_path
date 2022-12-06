@@ -44,10 +44,10 @@ div: $(obj_main)
 # 	gcc -shared $(obj_div) -o $(so_div)
 
 mult.so: $(src_mult)
-	gcc -shared $(src_mult) -o $(so_mult)
+	gcc -g -fPIC -shared $(src_mult) -o $(so_mult)
 
 div.so: $(src_div)
-	gcc -shared $(src_div) -o $(so_div)
+	gcc -g -fPIC -shared $(src_div) -o $(so_div)
 
 msg:
 	@echo "**************************************************************************************************"
