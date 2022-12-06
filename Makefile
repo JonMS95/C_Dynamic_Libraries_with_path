@@ -16,7 +16,8 @@ exe_div		= Executable_files/div
 shell_dirs	= Shell_files/directories.sh
 shell_test	= Shell_files/test.sh
 
-all: directories clean main.o mult.o div.o mult.so div.so mult div rm_obj msg test
+# all: directories clean main.o mult.o div.o mult.so div.so mult div rm_obj msg test
+all: directories clean main.o mult.so div.so mult div rm_obj msg test
 
 directories:
 	@./$(shell_dirs)
@@ -24,11 +25,11 @@ directories:
 main.o: $(src_main)
 	gcc -c $(src_main) -o $(obj_main)
 
-mult.o: $(src_mult)
-	gcc -c -fPIC $(src_mult) -o $(obj_mult)
+# mult.o: $(src_mult)
+# 	gcc -c -fPIC $(src_mult) -o $(obj_mult)
 
-div.o: $(src_div)
-	gcc -c -fPIC $(src_div) -o $(obj_div)
+# div.o: $(src_div)
+# 	gcc -c -fPIC $(src_div) -o $(obj_div)
 
 mult: $(obj_main)
 	gcc $(obj_main) -LDynamic_libraries -lmult -o $(exe_mult)
@@ -36,11 +37,17 @@ mult: $(obj_main)
 div: $(obj_main)
 	gcc $(obj_main) -LDynamic_libraries -ldiv -o $(exe_div)
 
-mult.so: $(obj_mult)
-	gcc -shared $(obj_mult) -o $(so_mult)
+# mult.so: $(obj_mult)
+# 	gcc -shared $(obj_mult) -o $(so_mult)
 
-div.so: $(obj_div)
-	gcc -shared $(obj_div) -o $(so_div)
+# div.so: $(obj_div)
+# 	gcc -shared $(obj_div) -o $(so_div)
+
+mult.so: $(src_mult)
+	gcc -shared $(src_mult) -o $(so_mult)
+
+div.so: $(src_div)
+	gcc -shared $(src_div) -o $(so_div)
 
 msg:
 	@echo "**************************************************************************************************"
